@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Interfaces\RepositoryActionInterface;
 use App\Http\Interfaces\SellingPriceInterface;
 use App\Http\Interfaces\UserInterface;
+use App\Http\Repositories\RepositoryActionRepository;
 use App\Http\Repositories\SellingPriceRepository;
 use App\Http\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
@@ -25,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(UserInterface::class, UserRepository::class);
         $this->app->singleton(SellingPriceInterface::class, SellingPriceRepository::class);
+        $this->app->singleton(RepositoryActionInterface::class, RepositoryActionRepository::class);
     }
 }
