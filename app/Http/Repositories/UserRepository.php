@@ -16,7 +16,8 @@ class UserRepository implements UserInterface
     public function __construct(
         private User $user,
         private Hash $hash,
-        private Product_variant $product_variant
+        private Product_variant $product_variant,
+        private Auth $auth
     ) {}
 
     public function register(UserRegisterRequest $request)
@@ -51,7 +52,7 @@ class UserRepository implements UserInterface
 
     public function show(string $id)
     {
-        $user = User::find($id);
+        $user = $this->user::find($id);
         if (!$user)
             return response()->json(['message' => 'Foydalanuvchi topilmadi'], 404);
         return response()->json($user, 200);
@@ -59,10 +60,10 @@ class UserRepository implements UserInterface
 
     public function update(UserUpdateRequest $request, string $id)
     {
-        $authUser = Auth::user();
+        $authUser = $this->auth::user();
         if ($authUser->id == $id) {
 
-            User::where('id', $id)
+            $this->user::where('id', $id)
                 ->update([
                     'password' => $request->password,
                     'full_name' => $request->full_name,
