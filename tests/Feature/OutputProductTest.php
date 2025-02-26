@@ -4,13 +4,9 @@ namespace Tests\Feature;
 
 use App\Models\category;
 use App\Models\Invoice;
-use App\Models\Market;
 use App\Models\Partner;
 use App\Models\Product_variant;
-use App\Models\SellingPrice;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -46,17 +42,6 @@ class OutputProductTest extends TestCase
             "status" => "continue",
         ]);
 
-
-        // $market = Market::create([
-        //     'title' => Str::random(10),
-        //     'adress' => Str::random(50),
-        //     'active' => true,
-        //     'start_date' => date('Y-m-d'),
-        //     'user_id' => $user->id
-        // ]);
-
-
-
         $category = category::create([
             "title" => Str::random(10),
             "active" => true,
@@ -68,15 +53,6 @@ class OutputProductTest extends TestCase
             "category_id" => $category->id,
             "active" => true,
         ]);
-
-        // $sellingPrice = SellingPrice::create([
-        //     "product_variant_id" => $product->id,
-        //     "price" => "5000",
-        //     "start_date" => date("Y-m-d H:i:s"),
-        //     "end_date" => date("Y-m-d H:i:s"),
-        //     "active" => $product->active,
-        //     "market_id" => 1,
-        // ]);
 
         $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])->post(
             '/api/outputProduct/create',
