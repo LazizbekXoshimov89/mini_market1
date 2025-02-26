@@ -1,16 +1,10 @@
 <?php
 namespace App\Http\Repositories;
-
 use App\Http\Interfaces\PartnerInterface;
-use App\Http\Interfaces\ProductVariantsInterface;
 use App\Http\Requests\PartnerStoreRequest;
-use App\Http\Requests\ProductStoreRequest;
-use App\Models\Invoice;
-use App\Models\Output_product_detail;
 use App\Models\Partner;
-use App\Models\Product_variant;
-use App\Models\Repository_action;
-use Illuminate\Support\Facades\DB;
+
+
 
 class PartnerRepository implements PartnerInterface
 {

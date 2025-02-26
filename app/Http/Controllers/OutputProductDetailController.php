@@ -18,12 +18,7 @@ class OutputProductDetailController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        Output_product_detail::create([
-          
-        ]);
-    }
+
 
     /**
      * Display the specified resource.
